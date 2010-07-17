@@ -117,6 +117,7 @@
     <Compile Include="Fakes\Barracks.cs" />
     <Compile Include="Fakes\ShortSword.cs" />
     <Compile Include="Integration\ActivationStrategyTests.cs" />
+    <Compile Include="Integration\DisguiseTests.cs" />
     <Compile Include="Integration\ConditionalAttributeBindingTests.cs" />
     <Compile Include="Integration\ConditionalBindingTests.cs" />
     <Compile Include="Integration\ConditionalBindingWhenParentTests.cs" />

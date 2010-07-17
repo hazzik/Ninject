@@ -37,6 +37,7 @@ namespace Ninject
         private readonly Multimap<Type, IBinding> _bindings = new Multimap<Type, IBinding>();
         private readonly Multimap<Type, IBinding> _bindingCache = new Multimap<Type, IBinding>();
         private readonly Dictionary<string, INinjectModule> _modules = new Dictionary<string, INinjectModule>();
+        private Multimap<Type, IBinding> _originalBindings = null;
 
         /// <summary>
         /// Lock used when adding missing bindings.
@@ -157,6 +158,13 @@ namespace Ninject
         private void AddBindings(IEnumerable<IBinding> bindings)
         {
             bindings.Map(binding => _bindings.Add(binding.Service, binding));
+            foreach(var binding in bindings)
+            {
+                if (_originalBindings != null)
+                    _bindings.RemoveAll(binding.Service);
+
+                _bindings.Add(binding.Service, binding);
+            }
 
             lock (_bindingCache)
                 _bindingCache.Clear();
@@ -424,6 +432,51 @@ namespace Ninject
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+	    public void PrepareDisguise()
+	    {
+            RemoveDisguise();
+            
+            lock (_bindingCache)
+            {
+                _originalBindings = new Multimap<Type, IBinding>();
+
+                foreach (KeyValuePair<Type, IBinding> binding in _bindings.SelectMany(
+                    bl => bl.Value.Select(b => new KeyValuePair<Type, IBinding>(bl.Key, b))))
+                {
+                    _originalBindings.Add(binding.Key, binding.Value);
+                }
+
+                _bindingCache.Clear();
+            }
+	    }
+
+        /// <summary>
+        /// 
+        /// </summary>
+	    public void RemoveDisguise()
+	    {
+            if (_originalBindings == null)
+                return;
+
+            lock (_bindingCache)
+            {
+                _bindings.Clear();
+
+                foreach (KeyValuePair<Type, IBinding> binding in _originalBindings.SelectMany(
+                    bl => bl.Value.Select(b => new KeyValuePair<Type, IBinding>(bl.Key, b))))
+                {
+                    _bindings.Add(binding.Key, binding.Value);
+                }
+
+                _originalBindings = null;
+
+                _bindingCache.Clear();
+            }
+	    }
+
+	    /// <summary>
         /// Creates a new builder for the specified binding.
         /// </summary>
         /// <typeparam name="T">The type restriction to apply to the binding builder.</typeparam>

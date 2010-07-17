@@ -102,5 +102,15 @@ namespace Ninject
         /// </summary>
         /// <returns>The new activation block.</returns>
         IActivationBlock BeginBlock();
+
+        /// <summary>
+        /// Existing bindings are are hidden, to be replaced with temporary bindings.
+        /// </summary>
+        void PrepareDisguise();
+
+        /// <summary>
+        /// Restores original bindings, clearing temporary bindings.
+        /// </summary>
+        void RemoveDisguise();
     }
 }
