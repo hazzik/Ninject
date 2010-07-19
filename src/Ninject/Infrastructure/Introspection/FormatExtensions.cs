@@ -75,6 +75,10 @@ namespace Ninject.Infrastructure.Introspection
                         sw.Write("binding from {0} to constant value", binding.Service.Format());
                         break;
 
+                    case BindingTarget.Factory:
+                        sw.Write("binding from {0} to a factory method", binding.Service.Format());
+                        break;
+
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

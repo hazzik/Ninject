@@ -44,6 +44,11 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Indicates that the binding is from a type to a constant value.
         /// </summary>
-        Constant
+        Constant,
+
+        /// <summary>
+        /// Indicates the binding if from Func[[T]] to a factory method for T.
+        /// </summary>
+        Factory
     }
 }

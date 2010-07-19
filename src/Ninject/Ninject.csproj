@@ -45,6 +45,8 @@
     <DocumentationFile>..\..\build\debug\Ninject.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -104,6 +106,8 @@
     </Compile>
     <Compile Include="Activation\Caching\IActivationCache.cs" />
     <Compile Include="Activation\Caching\ICachePruner.cs" />
+    <Compile Include="Activation\Providers\FactoryProvider.cs" />
+    <Compile Include="Planning\Bindings\Resolvers\FactoryBindingResolver.cs" />
     <Compile Include="Activation\Caching\IPruneable.cs" />
     <Compile Include="Activation\Strategies\ActivationCacheStrategy.cs" />
     <Compile Include="Infrastructure\Language\ExtensionsForMemberInfo.cs" />

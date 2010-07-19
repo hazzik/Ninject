@@ -111,10 +111,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\ArmsMaster.cs" />
     <Compile Include="MSTestAttributes\TestClassAttribute.cs" />
     <Compile Include="Fakes\Dagger.cs" />
     <Compile Include="Fakes\FootSoldier.cs" />
     <Compile Include="Fakes\Barracks.cs" />
+    <Compile Include="Fakes\Juggler.cs" />
     <Compile Include="Fakes\ShortSword.cs" />
     <Compile Include="Integration\ActivationStrategyTests.cs" />
     <Compile Include="Integration\DisguiseTests.cs" />
@@ -122,9 +124,11 @@
     <Compile Include="Integration\ConditionalBindingTests.cs" />
     <Compile Include="Integration\ConditionalBindingWhenParentTests.cs" />
     <Compile Include="Integration\ConstructorSelectionTests.cs" />
+    <Compile Include="Integration\FactoryBindingTests.cs" />
     <Compile Include="Integration\ManualReleaseTests.cs" />
     <Compile Include="Integration\ModuleLoadingTests.cs" />
     <Compile Include="Fakes\NinjaBarracks.cs" />
+    <Compile Include="Integration\MultiDependency.cs" />
     <Compile Include="Integration\InjectOnPropertyWithMoreRestrictiveSetter.cs" />
     <Compile Include="Integration\NamedPropertyInjectionTests.cs" />
     <Compile Include="Integration\PropertyInjectionTests.cs" />
@@ -155,6 +159,8 @@
     <Compile Include="Unit\BindingActionStrategyTests.cs" />
     <Compile Include="Unit\CompiledModuleLoaderPluginTests.cs" />
     <Compile Include="Unit\DynamicMethodInjectorFactoryTests.cs" />
+    <Compile Include="Unit\FactoryBindingResolverTest.cs" />
+    <Compile Include="Unit\FactoryProviderTests.cs" />
     <Compile Include="Unit\ExtensionsForMemberInfoTest.cs" />
     <Compile Include="Unit\ModuleLoaderTests.cs" />
     <Compile Include="Unit\NamedAttributeTests.cs" />
