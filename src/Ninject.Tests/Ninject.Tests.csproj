@@ -128,7 +128,6 @@
     <Compile Include="Integration\ManualReleaseTests.cs" />
     <Compile Include="Integration\ModuleLoadingTests.cs" />
     <Compile Include="Fakes\NinjaBarracks.cs" />
-    <Compile Include="Integration\MultiDependency.cs" />
     <Compile Include="Integration\InjectOnPropertyWithMoreRestrictiveSetter.cs" />
     <Compile Include="Integration\NamedPropertyInjectionTests.cs" />
     <Compile Include="Integration\PropertyInjectionTests.cs" />
@@ -149,6 +148,10 @@
     <None Include="TestModules\test.foo">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="Other\DepdencyGraphingKernelTest.cs" />
+    <Compile Include="Other\DependencyGraphNodeTest.cs" />
+    <Compile Include="Other\DependencyGraphTraversalTest.cs" />
+    <Compile Include="Other\PrintingDependencyGraphVisitorTest.cs" />
     <Compile Include="MSTestAttributes\TestInitialize.cs" />
     <Compile Include="Unit\ActivationCacheStrategyTest.cs" />
     <Compile Include="Unit\ActivationCacheTests.cs" />
@@ -213,6 +216,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

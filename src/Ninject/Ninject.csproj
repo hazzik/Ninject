@@ -107,6 +107,10 @@
     <Compile Include="Activation\Caching\IActivationCache.cs" />
     <Compile Include="Activation\Caching\ICachePruner.cs" />
     <Compile Include="Activation\Providers\FactoryProvider.cs" />
+    <Compile Include="Other\DependencyGraphingKernel.cs" />
+    <Compile Include="Other\DependencyGraphNode.cs" />
+    <Compile Include="Other\DependencyGraphTraversal.cs" />
+    <Compile Include="Other\PrintingDependencyGraphVisitor.cs" />
     <Compile Include="Planning\Bindings\Resolvers\FactoryBindingResolver.cs" />
     <Compile Include="Activation\Caching\IPruneable.cs" />
     <Compile Include="Activation\Strategies\ActivationCacheStrategy.cs" />

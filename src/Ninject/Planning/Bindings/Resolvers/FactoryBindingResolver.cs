@@ -22,10 +22,10 @@ namespace Ninject.Planning.Bindings.Resolvers
         /// <returns></returns>
         public IEnumerable<IBinding> Resolve(Multimap<Type, IBinding> bindings, IRequest request)
         {
-            if (!CanResolveType(request.Service))
-                return Enumerable.Empty<IBinding>();
+            var targetType = TypeIsFactoryMethodFor(request.Service);
 
-            var targetType = request.Service.GetGenericArguments()[0];
+            if (targetType == null)
+                return Enumerable.Empty<IBinding>();
 
             if (!bindings.ContainsKey(targetType))
                 return Enumerable.Empty<IBinding>();
@@ -45,9 +45,23 @@ namespace Ninject.Planning.Bindings.Resolvers
             }};
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="factoryType"></param>
+        /// <returns></returns>
+        public static Type TypeIsFactoryMethodFor(Type factoryType)
+        {
+            if (CanResolveType(factoryType))
+                return factoryType.GetGenericArguments()[0];
+            else
+                return null;
+        }
+
         private static bool CanResolveType(Type type)
         {
-            return type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(Func<>));
+            return type.IsGenericType
+                && (type.GetGenericTypeDefinition() == typeof(Func<>));
         }
     }
 }
